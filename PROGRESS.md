@@ -19,7 +19,7 @@
 
 ---
 
-## Day 2 - 20 Dec 2025
+## Day 2 - 19 Dec 2025
 
 ### Backend Progress
 - [x] Connected to MongoDB Atlas cloud database
@@ -47,7 +47,7 @@
 
 ---
 
-## Day 2 - 20 Dec 2025 (Part 2)
+## Day 3 - 20 Dec 2025 
 
 ### Backend Progress (User Authentication)
 - [x] Installed authentication packages: bcryptjs, jsonwebtoken
