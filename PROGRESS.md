@@ -49,19 +49,33 @@
 
 ## Day 2 - 20 Dec 2025 (Part 2)
 
-### Project: User Authentication
-- [x] Install new packages: bcryptjs, jsonwebtoken
-- [x] Create models/User.js (name, email, password, role)
-- [x] Create routes/userRoutes.js:
-  - POST /api/users/register - Create new user
-  - POST /api/users/login - Login and get token
-  - GET /api/users/profile - Get user profile (Protected)
-- [x] Create middleware/auth.js:
-  - Validate JWT token
-  - Protect routes
-- [x] Password hashing with bcrypt
-- [x] JWT token generation
-- [x] Update server.js to use new routes
-- [x] Protect log routes (only logged-in users can access)
+### Backend Progress (User Authentication)
+- [x] Installed authentication packages: bcryptjs, jsonwebtoken
+- [x] Created User model (name, email, password, role)
+- [x] Implemented Auth Routes:
+  - POST /api/users/register - Register new user
+  - POST /api/users/login - Login and get JWT token
+  - GET /api/users/profile - Get user profile (Protected route)
+- [x] Created Authentication Middleware (auth.js):
+  - Validates JWT tokens in request headers
+  - Protects routes from unauthorized access
+- [x] Implemented Security Features:
+  - Password hashing with bcrypt before saving
+  - JWT token generation upon login/register
+  - Protected Log API endpoints (CRUD operations now require login)
+- [x] Updated server.js to mount user routes
+
+### What I learned today
+- How to implement JWT (JSON Web Token) authentication
+- Password hashing using bcryptjs middleware in Mongoose
+- Protecting Express routes using custom middleware
+- Bearer token authentication flow
+- Handling HTTP headers for Authorization
+
+### Tomorrow's goal
+- Frontend integration (React/Next.js)
+- Build Login/Register UI
+- Connect Frontend to Backend APIs
+
 
 
