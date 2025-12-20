@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Log = require('../models/Log');
+const { protect } = require('../middleware/auth');
+
+// Protect all routes
+router.use(protect);
 
 // GET /api/logs - Get all logs
 router.get('/', async (req, res) => {

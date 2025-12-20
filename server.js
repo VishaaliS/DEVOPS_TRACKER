@@ -9,6 +9,7 @@ const connectDB = require('./config/db');
 
 // Import routes
 const logRoutes = require('./routes/logRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 // Connect to MongoDB
 connectDB();
@@ -22,19 +23,28 @@ app.use(express.json());
 // Home route
 app.get('/', (req, res) => {
     res.json({
-        message: 'Welcome to the Log API',
+        message: 'Welcome to the DevOps Tracker API',
         endpoints: {
-            getAllLogs: 'GET /api/logs',
-            getOneLog: 'GET /api/logs/:id',
-            createLog: 'POST /api/logs',
-            updateLog: 'PUT /api/logs/:id',
-            deleteLog: 'DELETE /api/logs/:id'
+            logs: {
+                getAllLogs: 'GET /api/logs',
+                getOneLog: 'GET /api/logs/:id',
+                createLog: 'POST /api/logs',
+                updateLog: 'PUT /api/logs/:id',
+                deleteLog: 'DELETE /api/logs/:id'
+            },
+            users: {
+                register: 'POST /api/users/register',
+                login: 'POST /api/users/login',
+                getProfile: 'GET /api/users/profile',
+                getAllUsers: 'GET /api/users'
+            }
         }
     });
 });
 
-// Mount log routes
+// Mount routes
 app.use('/api/logs', logRoutes);
+app.use('/api/users', userRoutes);
 
 // 404 handler
 app.use((req, res) => {
