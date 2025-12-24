@@ -9,7 +9,7 @@ router.use(protect);
 // GET /api/logs - Get all logs
 router.get('/', async (req, res) => {
     try {
-        const logs = await Log.find().sort({ createdAt: -1 });
+        const logs = await Log.find().populate('user', 'name email').sort({ createdAt: -1 });
         res.status(200).json({
             success: true,
             count: logs.length,
@@ -27,7 +27,7 @@ router.get('/', async (req, res) => {
 // GET /api/logs/:id - Get single log
 router.get('/:id', async (req, res) => {
     try {
-        const log = await Log.findById(req.params.id);
+        const log = await Log.findById(req.params.id).populate('user', 'name email');
         if (!log) {
             return res.status(404).json({
                 success: false,
@@ -53,7 +53,8 @@ router.post('/', async (req, res) => {
         const log = await Log.create({
             action: req.body.action,
             message: req.body.message,
-            level: req.body.level
+            level: req.body.level,
+            user: req.user.id
         });
         res.status(201).json({
             success: true,
